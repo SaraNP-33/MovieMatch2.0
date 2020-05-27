@@ -64,7 +64,27 @@ router.post("/addFavorites/:id", function(req,res){
     });
 });
 
-router.get
+router.get("/addFavorites/:movie",function(req,res){
+  
+    db.Movie.findOne({
+        where:{
+            id:req.params.id,
+            movieTitle: req.params.movieTitle,
+            moviePoster:req.params.moviePoster,
+            moviePlot:req.params.moviePlot,
+            movieGenre:req.params.movieGenre,
+            movieYear:req.params.movieYear
+        },
+        raw:true,
+
+       
+    }).then(response=>{
+        console.log(response)
+        res.send(response)
+    }).catch(err=>{
+        res.json(err)
+    });
+});
 
 
 module.exports=router;
