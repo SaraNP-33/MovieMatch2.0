@@ -33,9 +33,10 @@ router.get("/user/movie/:title" ,function(req,res){
         movieGenre:movie.Genre,
         movieYear:movie.Year
     });
-    })
-    res.send({msg:"Added the movie"})
-})
+    res.send(movie)
+    });
+    
+});
 
 
 module.exports=router;
