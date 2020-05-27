@@ -2,14 +2,15 @@ var bcrypt = require("bcryptjs");
 
 
 module.exports=function(sequelize, DataTypes){
-    var User= sequelize.define("Users",{
+    var User= sequelize.define("User",{
 
         email:{
             type:DataTypes.TEXT,
             allowNull:false,
-            unique:true,
             validate:{
-                isEmail:true
+                unique:true,
+                isEmail:true,
+                len:[50]
             }
         },
         password:{
@@ -33,6 +34,9 @@ module.exports=function(sequelize, DataTypes){
          );
        });
 
+      User.associate=function(models){
+          User.hasMany(models.MovieUser)
+      }
 
     return User;
 }

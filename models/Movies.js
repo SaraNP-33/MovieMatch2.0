@@ -25,5 +25,10 @@ module.exports=function(sequelize, DataTypes){
        
     
     });
-    return Movies
+  
+    Movies.associate=function(models){
+        Movies.hasMany(models.MovieUser)
+    }
+
+    return Movies;
 }

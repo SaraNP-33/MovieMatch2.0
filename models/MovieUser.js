@@ -1,7 +1,7 @@
 module.exports=function(sequelize, DataTypes){
-    var MovieUser= sequelize.define("Votes",{
+    var MovieUser= sequelize.define("MovieUser",{
 
-        Votes:{
+        votes:{
             type:DataTypes.INTEGER,
             allowNull:true,
             validate:{
@@ -11,5 +11,11 @@ module.exports=function(sequelize, DataTypes){
        
     
     });
+    
+ MovieUser.associate=function(models){
+     MovieUser.belongsTo(models.User)
+     MovieUser.belongsTo(models.Movies)
+ }
+
     return MovieUser;
 }
