@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 var router=require("./routes/api-routes.js");
+var router=require("./routes/userauth.js");
 
 app.use(router);
 
