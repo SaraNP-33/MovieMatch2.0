@@ -10,7 +10,7 @@ $("#login_btn").on("click", function(event){
     }
    $.ajax({
        url:"/",
-       type:"GET",
+       type:"POST",
        data:user
    }).then(function(conf){
       console.log(conf)
@@ -25,7 +25,7 @@ $("#register_btn").on("click", function(event){
 
    $.ajax({
        url:"/",
-       type:"GET",
+       type:"POST",
       
    }).then(function(conf){
       console.log(conf)
