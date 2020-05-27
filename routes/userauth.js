@@ -15,7 +15,7 @@ route.get("/register", function(req,res){
 
 route.get("/", function(req,res){
     if(req.user){
-        res.redirect("/user/movies");
+        res.redirect("/user/movie");
     }
     res.sendFile(path.join(__dirname,"../views/index.html"))
 });

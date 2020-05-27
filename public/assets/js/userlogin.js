@@ -5,7 +5,7 @@ $("#login_btn").on("click", function(event){
 
     let user ={
        email: $("#email").val().trim(),
-       password: $("#pass").val().trim()
+       password: $("#password").val().trim()
      
     }
    $.ajax({
@@ -14,6 +14,7 @@ $("#login_btn").on("click", function(event){
        data:user
    }).then(function(conf){
       console.log(conf)
+      location.href="/user/movie"
    })
 
 });
@@ -44,11 +45,12 @@ $("#sign-up").on("click", function(event){
      
     }
    $.ajax({
-       url:"/",
+       url:"/register",
        type:"POST",
        data:user
    }).then(function(conf){
       console.log(conf)
+      location.href="/user/movie"
    })
 
 });

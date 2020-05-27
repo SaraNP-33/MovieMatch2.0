@@ -5,12 +5,12 @@ module.exports=function(sequelize, DataTypes){
     var User= sequelize.define("User",{
 
         email:{
-            type:DataTypes.TEXT,
+            type:DataTypes.STRING,
             allowNull:false,
+            unique:true,
             validate:{
-                unique:true,
                 isEmail:true,
-                len:[50]
+                
             }
         },
         password:{
