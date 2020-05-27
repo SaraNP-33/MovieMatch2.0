@@ -25,11 +25,30 @@ $("#register_btn").on("click", function(event){
 
    $.ajax({
        url:"/",
-       type:"POST",
+       type:"GET",
       
    }).then(function(conf){
       console.log(conf)
-      location.href="/register";
+      location.href="/register"
+   })
+
+});
+
+$("#sign-up").on("click", function(event){
+    event.preventDefault();
+    console.log("button clicked");
+
+    let user ={
+       email: $("#email").val().trim(),
+       password: $("#password").val().trim()
+     
+    }
+   $.ajax({
+       url:"/",
+       type:"POST",
+       data:user
+   }).then(function(conf){
+      console.log(conf)
    })
 
 });

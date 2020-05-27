@@ -20,10 +20,11 @@ app.use(passport.session());
 
 
 var router=require("./routes/api-routes.js");
-var router=require("./routes/userauth.js");
+var route=require("./routes/userauth.js");
 var routes=require("./routes/userpassport");
 
 app.use(router);
+app.use(route);
 app.use(routes);
 
 //{force:true}
