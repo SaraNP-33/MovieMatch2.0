@@ -26,12 +26,15 @@ router.get("/user/movie/:title" ,function(req,res){
         movie=response.data;
         console.log(movie.Title);
 
-    db.Movies.create({
-        movieTitle: movie.Title,
-        moviePoster:movie.Poster,
-        moviePlot:movie.Plot,
-        movieGenre:movie.Genre,
-        movieYear:movie.Year
+    db.Movies.findOrCreate({
+        where:{
+            movieTitle: movie.Title,
+            moviePoster:movie.Poster,
+            moviePlot:movie.Plot,
+            movieGenre:movie.Genre,
+            movieYear:movie.Year
+        }
+       
     });
     res.send(movie)
     });
