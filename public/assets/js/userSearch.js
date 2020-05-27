@@ -29,23 +29,42 @@ $(document).ready(()=>{
         // });
     }).then(function(res){
         console.log(res)
+        var movie= res[0]
+        $("#output").empty();
              var p = $("<p>");
             var resultsDiv = $("<div>")
-            var title = $("<h3>").text(res.Title);
-            var actors = $("<p>").text(res.Actors);
-            var year = $("<p>").text(res.Year);
-            var plot = $("<p>").text(res.Plot);
+            var title = $("<h3>").text(movie.movieTitle);
+           
+            var year = $("<p>").text(movie.movieYear);
+            var plot = $("<p>").text(movie.moviePlot);
             // var poster = $("<img>").src(data.poster);
             var poster = $("<img>");
-            poster.attr("src", res.Poster);
-            p.append(title, actors, year, plot);
+            poster.attr("src", movie.moviePoster);
+            p.append(title, year, plot);
             resultsDiv.append(poster);
             resultsDiv.append(p);
           
             $("#output").prepend(resultsDiv);
+
+            var button= $("<button>").attr({"data-movieid":movie.id,"id":'Add'}).text("ADD to Favorites")
+            $("#output").append(button)
     });
     
 
 
 });
+
+$(document).on("click","#Add", function(event){
+    var movieid=$("#Add").data("movieid")
+    console.log(movieid)
+    $.ajax({
+        url:"/addFavorites/"+ movieid,
+        method:"POST"
+        
+    }).then(function(response){
+        location.href="/addFavorites"
+    }).fail(function(err){
+        console.log(err)
+    })
+})
 });

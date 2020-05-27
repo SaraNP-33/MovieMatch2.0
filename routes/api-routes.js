@@ -15,7 +15,7 @@ router.get("/user/movie", function(req,res){
     res.sendFile(path.join(__dirname,"../views/userPage.html"))
 });
 
-router.get("/movies", function(req,res){
+router.get("/addFavorites", function(req,res){
     res.sendFile(path.join(__dirname,"../views/movies.html"))
 });
 
@@ -38,13 +38,33 @@ router.get("/user/movie/:title" ,function(req,res){
             moviePlot:movie.Plot,
             movieGenre:movie.Genre,
             movieYear:movie.Year
-        }
+        },
+        raw:true
        
-    });
-    res.send(movie)
+    })
+    .then(function(dbMovie){
+        console.log(dbMovie);
+        res.send(dbMovie);
+    })
+    // res.send(movie)
     });
     
 });
+router.post("/addFavorites/:id", function(req,res){
+    var movieId=req.params.id
+    var userId=req.user.id
+
+    db.MovieUser.create({
+        UserId:userId,
+        MovieId:movieId
+    }).then(response=>{
+        res.sendStatus(200)
+    }).catch(err=>{
+        res.json(err)
+    });
+});
+
+router.get
 
 
 module.exports=router;
