@@ -37,10 +37,10 @@ $(document).ready(()=>{
            
             var year = $("<p>").text(movie.movieYear);
             var plot = $("<p>").text(movie.moviePlot);
-            // var poster = $("<img>").src(data.poster);
+            var genre=$("<p>").text(movie.movieGenre)
             var poster = $("<img>");
             poster.attr("src", movie.moviePoster);
-            p.append(title, year, plot);
+            p.append(title, year, plot, genre);
             resultsDiv.append(poster);
             resultsDiv.append(p);
           
@@ -57,14 +57,37 @@ $(document).ready(()=>{
 $(document).on("click","#Add", function(event){
     var movieid=$("#Add").data("movieid")
     console.log(movieid)
-    $.ajax({
+    $.when($.ajax({
         url:"/addFavorites/"+ movieid,
         method:"POST"
         
     }).then(function(response){
         location.href="/addFavorites"
+
+
     }).fail(function(err){
         console.log(err)
-    })
+    }));
+
+ 
 })
+$.get("/addFavorites/:movie",data,function(data){
+        console.log(data)
+        var movie= data[0]
+             var p = $("<p>");
+             var resultsDiv= $("<div>").attr({"data-movieid":movie.id,"id":'movie'})
+            var title = $("<h3>").text(movie.movieTitle);
+            var year = $("<p>").text(movie.movieYear);
+            var plot = $("<p>").text(movie.moviePlot);
+            var genre=$("<p>").text(movie.movieGenre)
+            var poster = $("<img>");
+            poster.attr("src", movie.moviePoster);
+            p.append(title, year, plot, genre);
+            resultsDiv.append(poster);
+            resultsDiv.append(p);
+          
+            $("#faves").prepend(resultsDiv);
+     })
+    
 });
+
