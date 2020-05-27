@@ -23,7 +23,7 @@ router.get("/user/movie/:title" ,function(req,res){
     var title=req.params.title;
     title=title.replace(" ", "%20");
 
-    var uri=`http://www.omdbapi.com/?s=${title}&apikey=trilogy`
+    var uri=`http://www.omdbapi.com/?t=${title}&apikey=trilogy`
     console.log(uri);
 
     axios.get(uri)

@@ -14,7 +14,7 @@ passport.use(new LocalStrategy(
   },
   function(email, password, done) {
     // when user tries to sign in this code runs
-    db.User.findOrCreate({
+    db.User.findOne({
       where: {
         email: email
       }
