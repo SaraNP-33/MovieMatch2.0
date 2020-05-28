@@ -1,5 +1,5 @@
 
-![alt text](https://github.com/SaraNP-33/MovieMatch/blob/master/public/assets/images/image(2).png)
+![alt text](https://github.com/SaraNP-33/MovieMatch/blob/master/public/assets/images/image(2).png?style=centerme)
 
 ___
 
