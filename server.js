@@ -3,6 +3,7 @@ var session=require("express-session")
 var passport=require("./config/passport")
 
 var PORT=process.env.PORT || 8080;
+baseUrl = process.env.baseURL || PORT;
 
 var app=express();
  
