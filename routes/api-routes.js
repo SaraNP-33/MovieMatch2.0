@@ -51,6 +51,7 @@ router.get("/user/movie/:title" ,function(req,res){
     
 });
 router.post("/addFavorites/:id", function(req,res){
+    console.log("unicorn")
     var movieId=req.params.id
     var userId=req.user.id
 
@@ -58,33 +59,46 @@ router.post("/addFavorites/:id", function(req,res){
         UserId:userId,
         MovieId:movieId
     }).then(response=>{
-        res.sendStatus(200)
+        console.log(response)
+        console.log("****************************")
+        db.Movies.findOrCreate({
+            where:{
+                id:movieId
+            }
+            
+        }).then(result=>{
+            console.log(result)
+            console.log("dragon")
+            res.send(result)
+        }).catch(err=>{
+            res.json(err)
+        });
     }).catch(err=>{
-        res.json(err)
+        console.log(err)
     });
 });
 
-router.get("/addFavorites/:movie",function(req,res){
+// router.get("/addFavorites/:movie",function(req,res){
   
-    db.Movie.findOne({
-        where:{
-            id:req.params.id,
-            movieTitle: req.params.movieTitle,
-            moviePoster:req.params.moviePoster,
-            moviePlot:req.params.moviePlot,
-            movieGenre:req.params.movieGenre,
-            movieYear:req.params.movieYear
-        },
-        raw:true,
+//     db.Movie.findOne({
+//         where:{
+//             id:req.params.id,
+//             movieTitle: req.params.movieTitle,
+//             moviePoster:req.params.moviePoster,
+//             moviePlot:req.params.moviePlot,
+//             movieGenre:req.params.movieGenre,
+//             movieYear:req.params.movieYear
+//         },
+//         raw:true,
 
        
-    }).then(response=>{
-        console.log(response)
-        res.send(response)
-    }).catch(err=>{
-        res.json(err)
-    });
-});
+//     }).then(response=>{
+//         console.log(response)
+//         res.send(response)
+//     }).catch(err=>{
+//         res.json(err)
+//     });
+// });
 
 
 module.exports=router;
