@@ -71,23 +71,23 @@ $(document).on("click","#Add", function(event){
 
  
 })
-$.get("/addFavorites/:movie",data,function(data){
-        console.log(data)
-        var movie= data[0]
-             var p = $("<p>");
-             var resultsDiv= $("<div>").attr({"data-movieid":movie.id,"id":'movie'})
-            var title = $("<h3>").text(movie.movieTitle);
-            var year = $("<p>").text(movie.movieYear);
-            var plot = $("<p>").text(movie.moviePlot);
-            var genre=$("<p>").text(movie.movieGenre)
-            var poster = $("<img>");
-            poster.attr("src", movie.moviePoster);
-            p.append(title, year, plot, genre);
-            resultsDiv.append(poster);
-            resultsDiv.append(p);
+// $.get("/addFavorites/:movie",data,function(data){
+//         console.log(data)
+//         var movie= data[0]
+//              var p = $("<p>");
+//              var resultsDiv= $("<div>").attr({"data-movieid":movie.id,"id":'movie'})
+//             var title = $("<h3>").text(movie.movieTitle);
+//             var year = $("<p>").text(movie.movieYear);
+//             var plot = $("<p>").text(movie.moviePlot);
+//             var genre=$("<p>").text(movie.movieGenre)
+//             var poster = $("<img>");
+//             poster.attr("src", movie.moviePoster);
+//             p.append(title, year, plot, genre);
+//             resultsDiv.append(poster);
+//             resultsDiv.append(p);
           
-            $("#faves").prepend(resultsDiv);
-     })
+//             $("#faves").prepend(resultsDiv);
+//      })
     
 });
 
