@@ -39,4 +39,4 @@ ___
 + MySQL
 - Axios 
 
-[Heroku Deployed Link](https://secure-crag-05020.herokuapp.com/)
+[Heroku Deployed Link](https://lit-beach-03757.herokuapp.com/)
