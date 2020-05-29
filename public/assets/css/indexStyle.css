@@ -1,0 +1,198 @@
+
+/*
+ * Base structure
+ */
+
+ html,
+ body {
+   height: 100%;
+   background-color: #333;
+ }
+ 
+ body {
+   display: -ms-flexbox;
+   display: flex;
+   color: #fff;
+   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+ }
+ 
+ .cover-container {
+   max-width: 42em;
+ }
+ 
+ 
+ /*
+  * Header
+  */
+ .masthead {
+   margin-bottom: 2rem;
+ }
+ 
+ .masthead-brand {
+   margin-bottom: 0;
+ }
+ 
+ .nav-masthead .nav-link {
+   padding: .25rem 0;
+   font-weight: 700;
+   color: rgba(255, 255, 255, .5);
+   background-color: transparent;
+   border-bottom: .25rem solid transparent;
+ }
+ 
+ .nav-masthead .nav-link:hover,
+ .nav-masthead .nav-link:focus {
+   border-bottom-color: rgba(255, 255, 255, .25);
+ }
+ 
+ .nav-masthead .nav-link + .nav-link {
+   margin-left: 1rem;
+ }
+ 
+ .nav-masthead .active {
+   color: #fff;
+   border-bottom-color: #fff;
+ }
+ 
+ @media (min-width: 48em) {
+   .masthead-brand {
+     float: left;
+   }
+   .nav-masthead {
+     float: right;
+   }
+ }
+ 
+ 
+ /*
+  * Cover
+  */
+ .cover {
+   padding: 0 1.5rem;
+ }
+ .cover .btn-lg {
+   padding: .75rem 1.25rem;
+   font-weight: 700;
+ }
+ 
+ 
+ /*
+  * Footer
+  */
+ .mastfoot {
+   color: rgba(255, 255, 255, .5);
+ }
+ 
+
+
+ 
+element.style {
+}
+.justify-content-center {
+    -ms-flex-pack: center!important;
+    justify-content: center!important;
+}
+.d-flex {
+    display: -ms-flexbox!important;
+    display: flex!important;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+.text-center {
+    text-align: center!important;
+}
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    /* color: rgb(255, 199, 16); ***** */
+    color: rgb(255, 199, 16);
+    text-align: left;
+    
+}
+
+  .user_card {
+    height: 400px;
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+    /* background: #f39c12; */
+    /* background: rgb(182, 151, 15); */
+
+    /* background-image: url("../../assets/images/signBackground.jpg"); */
+ 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(70, 5, 5, 0.685), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+
+  }
+  .brand_logo_container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -75px;
+    border-radius: 50%;
+    /* background: #60a3bc; */
+    /* background:   rgb(67, 7, 139); */
+    /* background:   rgb(67, 7, 139); ****** */
+    background:   rgb(224, 172, 28);
+    padding: 10px;
+    text-align: center;
+  }
+
+  a {
+/* color:  rgb(175, 93, 243); ****** */
+color:  rgb(175, 93, 243);
+  }
+
+  .brand_logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+  .form_container {
+    margin-top: 100px;
+  }
+  .login_btn {
+    width: 100%;
+    background: #c0392b !important;
+    color: white !important;
+  }
+  .login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+  }
+  .login_container {
+    padding: 0 2rem;
+  }
+  .input-group-text {
+    background: #c0392b !important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+  }
+  .input_user,
+  .input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+  }
+  .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #c0392b !important;
+  }
