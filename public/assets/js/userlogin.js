@@ -14,7 +14,7 @@ $("#login_btn").on("click", function(event){
        data:user
    }).then(function(conf){
       console.log(conf)
-      location.href="/user/movie"
+      location.href="/welcomepage"
    })
 
 });

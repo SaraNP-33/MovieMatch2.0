@@ -1,4 +1,5 @@
 $(document).ready(()=>{
+    
     // event to allow user to make a general search for movies using key words
     $("#run").on("click",(event)=>{
         

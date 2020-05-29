@@ -10,6 +10,9 @@ var db=require("../models");
 
 var path=require("path");
 
+router.get("/welcomepage", function(req,res){
+    res.sendFile(path.join(__dirname,"../views/welcomePage.html"))
+});
 
 router.get("/user/movie", function(req,res){
     res.sendFile(path.join(__dirname,"../views/userPage.html"))
