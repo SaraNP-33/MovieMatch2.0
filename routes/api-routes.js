@@ -15,7 +15,7 @@ router.get("/welcomepage", function(req,res){
 });
 
 router.get("/user/movie", function(req,res){
-    res.sendFile(path.join(__dirname,"../views/userPage.html"))
+    res.sendFile(path.join(__dirname,"../views/searchPage.html"))
 });
 
 router.get("/addFavorites", function(req,res){
