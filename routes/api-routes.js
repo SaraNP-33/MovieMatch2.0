@@ -20,34 +20,34 @@ router.get("/addFavorites", function(req,res){
     res.sendFile(path.join(__dirname,"../views/movies.html"))
 });
 
-router.get("/user/movie/:title" ,function(req,res){
-    var title=req.params.title;
-    title=title.replace(" ", "%20");
+router.get("/user/movie/:search" ,function(req,res){
+    var search=req.params.search;
+    search=search.replace(" ", "%20");
 
-    var uri=`http://www.omdbapi.com/?t=${title}&apikey=trilogy`
+    var uri=`http://www.omdbapi.com/?s=${search}&apikey=trilogy`
     console.log(uri);
 
     axios.get(uri)
     .then(response=>{
-        movie=response.data;
-        console.log(movie.Title);
+       var movie=response.data;
+        // console.log(movie.Title);
 
-    db.Movies.findOrCreate({
-        where:{
-            movieTitle: movie.Title,
-            moviePoster:movie.Poster,
-            moviePlot:movie.Plot,
-            movieGenre:movie.Genre,
-            movieYear:movie.Year
-        },
-        raw:true
+    // db.Movies.findOrCreate({
+    //     where:{
+    //         movieTitle: movie.Title,
+    //         moviePoster:movie.Poster,
+    //         moviePlot:movie.Plot,
+    //         movieGenre:movie.Genre,
+    //         movieYear:movie.Year
+    //     },
+    //     raw:true
        
-    })
-    .then(function(dbMovie){
-        console.log(dbMovie);
-        res.send(dbMovie);
-    })
-    // res.send(movie)
+    // })
+    // .then(function(dbMovie){
+    //     console.log(dbMovie);
+    //     res.send(dbMovie);
+    // })
+    res.send(movie)
     });
     
 });
