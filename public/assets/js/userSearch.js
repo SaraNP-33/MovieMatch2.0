@@ -1,6 +1,5 @@
 $(document).ready(()=>{
-    // uri = "http://localhost:8080/"
-
+    // event to allow user to make a general search for movies using key words
     $("#run").on("click",(event)=>{
         
         var text=$("#movies").val().trim();
@@ -8,46 +7,27 @@ $(document).ready(()=>{
         $.ajax({
             url: "/user/movie/" +text,
             method:"GET"
-            // success: function(res){
-            //     console.log(res)
-            //     let movies=res;
-            //     console.log(movies);
-            //     let output=" ";
-
-            //     $.each(movies,(index, movie)=>{
-            //         output+=`
-            //         <div src="${movie.Poster}"</div>
-            //         <h3>${movie.Title}</h3>
-            //         <h5>${movie.Genre}</h5>
-            //         <h5>${movie.Year}</h5>
-            //         <p>${movie.Plot}</p>
-                    
-            //         `
-            //     });
-            //     $("output").html(output);
-            // }
-        // });
+         
     }).then(function(res){
         console.log(res)
-        var movie= res[0]
+        // var movie= res[0]
         $("#output").empty();
-             var p = $("<p>");
-            var resultsDiv = $("<div>")
-            var title = $("<h3>").text(movie.movieTitle);
-           
-            var year = $("<p>").text(movie.movieYear);
-            var plot = $("<p>").text(movie.moviePlot);
-            var genre=$("<p>").text(movie.movieGenre)
-            var poster = $("<img>");
-            poster.attr("src", movie.moviePoster);
-            p.append(title, year, plot, genre);
-            resultsDiv.append(poster);
-            resultsDiv.append(p);
-          
-            $("#output").prepend(resultsDiv);
+        var movie=res.Search;
+        console.log(movie)
+       
+        var output =" ";
 
-            var button= $("<button>").attr({"data-movieid":movie.id,"id":'Add'}).text("ADD to Favorites")
-            $("#output").append(button)
+        for (var i=0;i<movie.length;i++){
+            output+=`
+            <div class=col-md-4>
+            <img src ="${movie[i].Poster}">
+            <h3>${movie[i].Title}</h3>
+            <p>${movie[i].Year}</p>
+            </div>
+            `
+        }
+        $("#output").html(output);
+        
     });
     
 
