@@ -1,8 +1,10 @@
 var express=require("express");
-var session=require("express-session")
-var passport=require("./config/passport")
+var session=require("express-session");
+var passport=require("./config/passport");
+var cors=require("cors");
 
 var PORT=process.env.PORT || 8080;
+baseUrl = process.env.baseURL || "http://localhost:8080";
 
 var app=express();
  

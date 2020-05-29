@@ -41,10 +41,57 @@ router.get("/user/movie/:title" ,function(req,res){
         }
        
     });
-    res.send(movie)
-    });
     
 });
+router.post("/addFavorites/:id", function(req,res){
+    console.log("unicorn")
+    var movieId=req.params.id
+    var userId=req.user.id
+
+    db.MovieUser.create({
+        UserId:userId,
+        MovieId:movieId
+    }).then(response=>{
+        console.log(response)
+        console.log("****************************")
+        db.Movies.findOrCreate({
+            where:{
+                id:movieId
+            }
+            
+        }).then(result=>{
+            console.log(result)
+            console.log("dragon")
+            res.send(result)
+        }).catch(err=>{
+            res.json(err)
+        });
+    }).catch(err=>{
+        console.log(err)
+    });
+});
+
+// router.get("/addFavorites/:movie",function(req,res){
+  
+//     db.Movie.findOne({
+//         where:{
+//             id:req.params.id,
+//             movieTitle: req.params.movieTitle,
+//             moviePoster:req.params.moviePoster,
+//             moviePlot:req.params.moviePlot,
+//             movieGenre:req.params.movieGenre,
+//             movieYear:req.params.movieYear
+//         },
+//         raw:true,
+
+       
+//     }).then(response=>{
+//         console.log(response)
+//         res.send(response)
+//     }).catch(err=>{
+//         res.json(err)
+//     });
+// });
 
 
 module.exports=router;
