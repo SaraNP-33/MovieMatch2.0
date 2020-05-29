@@ -16,6 +16,7 @@ router.get("/user/movie", function(req,res){
 });
 
 router.get("/addFavorites", function(req,res){
+
     res.sendFile(path.join(__dirname,"../views/movies.html"))
 });
 
@@ -61,10 +62,11 @@ router.post("/addFavorites/:id", function(req,res){
     }).then(response=>{
         console.log(response)
         console.log("****************************")
-        db.Movies.findOrCreate({
+        db.Movies.findOne({
             where:{
                 id:movieId
-            }
+            },
+            raw:true
             
         }).then(result=>{
             console.log(result)

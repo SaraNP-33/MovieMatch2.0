@@ -1,5 +1,5 @@
 $(document).ready(()=>{
-    uri = window.location.origin
+    uri = "http://localhost:8080/"
 
     $("#run").on("click",(event)=>{
         
@@ -63,8 +63,9 @@ $(document).on("click","#Add", function(event){
         
     }).then(function(response){
         console.log(JSON.stringify(response))
-        // location.href="/addFavorites"
-        var movie=response[0];
+        location.href="/addFavorites/"
+        var movie=response[0];                                          
+                                                                            
         var p = $("<p>");
         var resultsDiv= $("<div>")
        var title = $("<h3>").text(movie.movieTitle);
@@ -77,7 +78,7 @@ $(document).on("click","#Add", function(event){
        resultsDiv.append(poster);
        resultsDiv.append(p);
      
-       $("#faves").prepend(resultsDiv);
+       $("#faves").prepend(movie.moviePoster);
 
 
     }).fail(function(err){
@@ -89,3 +90,21 @@ $(document).on("click","#Add", function(event){
 
 });
 
+$.get("/addFavorites", function(data){
+    console.log(data)
+    for(var i=0;i<data.length;i++){
+        var movies=$("<div>")
+
+        movies.addClass("movie")
+
+        movies.attr("id", "moviedb", + i)
+
+        $("#faves").append(movies);
+
+        $("#moviedb" +i).append("<h3>"+ (i+1)+" ." +data[i].movieTitle+"</h3>")
+        $("#moviedb" +i).append("<p>"+  +data[i].movieYear+ "</p>")
+        $("#moviedb" +i).append("<p>"+  +data[i].movieGenre+ "</p>")
+        $("#moviedb" +i).append("<p>"+  +data[i].moviePlot+ "</p>")
+
+    }
+})
