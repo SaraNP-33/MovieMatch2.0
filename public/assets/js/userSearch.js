@@ -1,15 +1,17 @@
+// const session = require("express-session");
+
 $(document).ready(()=>{
-    //event to allow user into the search page
     
     // event to allow user to make a general search for movies using key words
     $("#run").on("click",(event)=>{
         
         var text=$("#movies").val().trim();
 
+
         $.ajax({
             url: "/user/movie/" +text,
-            method:"GET"
-         
+            method:"GET",
+           
     }).then(function(res){
         console.log(res)
         // var movie= res[0]
@@ -25,14 +27,51 @@ $(document).ready(()=>{
             <img src ="${movie[i].Poster}">
             <h3>${movie[i].Title}</h3>
             <p>${movie[i].Year}</p>
+            <button type="button" id="oneMovie" class="btn btn-danger" data-movieid="${movie[i].imdbID}">Movie Details </button>
             </div>
             `
         }
         $("#output").html(output);
         
     });
-    
 
+   
+$(document).on("click", "#oneMovie", function(event){
+    var movieid=$("#oneMovie").data("movieid")
+
+    $.ajax({
+        url:"/movies/"+movieid,
+        method:"GET"
+
+    }).then(result=>{
+        var oneMovie=result
+        console.log(oneMovie)
+        console.log(oneMovie.Title)
+    
+        var output=`
+        <div class="modal-header">
+        <h5 class="modal-title">${oneMovie.Title}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        </div>
+        <div class="modal-body">
+        <img src=${oneMovie.Poster}>
+        <p>${oneMovie.Year}</p>
+        <p>${oneMovie.Genre}</p>
+        <p>${oneMovie.Plot}</p>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        `
+        $(".modal-content").append(output);
+        $("#result-modal").modal("toggle");
+        
+    }).fail(function(err){
+        console.log(err)
+    })
+})
 
 });
 

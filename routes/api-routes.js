@@ -52,8 +52,25 @@ router.get("/user/movie/:search" ,function(req,res){
     // })
     res.send(movie)
     });
-    
+
+    router.get("/movies/:onemovie",function(req,res){
+        console.log("route was hit")
+        var onemovie = req.params.onemovie;
+        var url=`http://www.omdbapi.com/?i=${onemovie}&apikey=trilogy`
+        console.log(url)
+
+        axios.get(url)
+        .then(response=>{
+            var movie=response.data;
+            res.send(movie)
+            console.log(movie)
+        }).catch(function(err){
+            console.log(err)
+        });
+
+    });
 });
+
 router.post("/addFavorites/:id", function(req,res){
     console.log("unicorn")
     var movieId=req.params.id
