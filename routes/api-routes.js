@@ -33,23 +33,7 @@ router.get("/user/movie/:search" ,function(req,res){
     axios.get(uri)
     .then(response=>{
        var movie=response.data;
-        // console.log(movie.Title);
-
-    // db.Movies.findOrCreate({
-    //     where:{
-    //         movieTitle: movie.Title,
-    //         moviePoster:movie.Poster,
-    //         moviePlot:movie.Plot,
-    //         movieGenre:movie.Genre,
-    //         movieYear:movie.Year
-    //     },
-    //     raw:true
-       
-    // })
-    // .then(function(dbMovie){
-    //     console.log(dbMovie);
-    //     res.send(dbMovie);
-    // })
+    
     res.send(movie)
     });
 
@@ -70,25 +54,35 @@ router.get("/user/movie/:search" ,function(req,res){
 
     });
 });
-router.post("/addFavorites/", function(req,res){
+router.post("/addFavorites", function(req,res){
     console.log("unicorn")
-    var addMovie=response.data
-    db.Movies.findOrcreate({
+    var addMovie=req.body
+    var userId=req.user.id
+    console.log(addMovie)
+    db.Movies.findOrCreate({
         where:{
-            movieTitle:addMovie.Title,
-            moviePoster:addMovie.Poster,
-            moviePlot:addMovie.Plot,
-            movieGenre:addMovie.Genre,
-            movieYear:addMovie.Year
-        }
+            movieTitle:addMovie.movieTitle,
+            moviePoster:addMovie.moviePoster,
+            moviePlot:addMovie.moviePlot,
+            movieGenre:addMovie.movieGenre,
+            movieYear:addMovie.movieYear
+        },
+      
     }).then(dbMovie=>{
         console.log(dbMovie)
-        var movieId=req.params.id
+        
         var userId=req.user.id
 
         db.MovieUser.create({
-            userID:userId,
-            MovieID:movieId
+           where:{
+            UserId:userId
+           },
+           include:[{
+               model:db.Movies,
+               as:"id"
+
+           }]
+            
         }).then(response=>{
             res.status(200)
         });

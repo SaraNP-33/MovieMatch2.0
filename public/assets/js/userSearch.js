@@ -50,15 +50,15 @@ $(document).on("click", ".oneMovie", function(event){
     
         var output=`
         <div class="modal-header justify-content-center">
-        <h5 class="modal-title">${oneMovie.Title}</h5>
+        <h5 class="modal-title" id="title" data-title="${oneMovie.Title}">${oneMovie.Title}</h5>
         </div>
         <div class="modal-body">
-        <img src=${oneMovie.Poster}>
-        <p>${oneMovie.Year}</p>
-        <p>${oneMovie.Genre}</p>
-        <p>${oneMovie.Plot}</p>
+        <img id="poster" data-poster="${oneMovie.Poster}"src=${oneMovie.Poster}>
+        <p id="year" data-year="${oneMovie.Year}">${oneMovie.Year}</p>
+        <p id="genre" data-genre="${oneMovie.Genre}">${oneMovie.Genre}</p>
+        <p id="plot" data-plot="${oneMovie.Plot}">${oneMovie.Plot}</p>
         <div class="modal-footer">
-        <button type="button" id="Add" class="btn btn-primary" data-addMovie=${result}>Add</button>
+        <button type="button" id="Add" class="btn btn-primary" data-addMovie=${oneMovie}>Add</button>
         <button type="button" id="close"class="btn btn-secondary" data-dismiss="modal">Close</button>
           
         `
@@ -82,28 +82,31 @@ $(document).on("click", "#close", function(event){
 
 //add the movie to the favorites 
 $(document).on("click","#Add", function(event){
-    var addMovie=$(this).data("addMovie")
-    console.log(addMovie)
+    var title=$("#title").attr("data-title")
+    var year=$("#year").attr("data-year")
+    var poster=$("#poster").attr("data-poster")
+    var genre=$("#genre").attr("data-genre")
+    var plot=$("#plot").attr("data-plot")
+    console.log(poster)
+    console.log(year)
+    console.log(title)
+    console.log(genre)
+    console.log(plot)
  
- 
+ var newMovie={
+     movieTitle:title,
+     moviePoster:poster,
+     movieYear:year,
+     movieGenre:genre,
+     moviePlot:plot
+ }
+ console.log(newMovie)
 
+ $.post("/addFavorites",newMovie)
+ .then(function(data){
+     console.log(data)
+     
+ })
 });
 
-// $.get("/addFavorites", function(data){
-//     console.log(data)
-//     for(var i=0;i<data.length;i++){
-//         var movies=$("<div>")
-
-//         movies.addClass("movie")
-
-//         movies.attr("id", "moviedb", + i)
-
-//         $("#faves").append(movies);
-
-//         $("#moviedb" +i).append("<h3>"+ (i+1)+" ." +data[i].movieTitle+"</h3>")
-//         $("#moviedb" +i).append("<p>"+  +data[i].movieYear+ "</p>")
-//         $("#moviedb" +i).append("<p>"+  +data[i].movieGenre+ "</p>")
-//         $("#moviedb" +i).append("<p>"+  +data[i].moviePlot+ "</p>")
-
-//     }
 })
