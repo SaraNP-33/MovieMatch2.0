@@ -63,7 +63,9 @@
      float: right;
    }
  }
- 
+ .modal-content{
+   color:black;
+ }
  
  /*
   * Cover
