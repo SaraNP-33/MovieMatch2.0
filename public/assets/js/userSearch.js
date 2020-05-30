@@ -40,7 +40,7 @@ $(document).on("click", "#oneMovie", function(event){
     var movieid=$("#oneMovie").data("movieid")
 
     $.ajax({
-        url:"/movies/"+movieid,
+        url:"/movies/"+ movieid,
         method:"GET"
 
     }).then(result=>{

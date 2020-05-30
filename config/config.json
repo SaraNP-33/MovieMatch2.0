@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Winnie5760!",
+    "password": "password",
     "database": "movieMatch2_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
