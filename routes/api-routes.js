@@ -70,35 +70,61 @@ router.get("/user/movie/:search" ,function(req,res){
 
     });
 });
-
-router.post("/addFavorites/:id", function(req,res){
+router.post("/addFavorites/", function(req,res){
     console.log("unicorn")
-    var movieId=req.params.id
-    var userId=req.user.id
+    var addMovie=response.data
+    db.Movies.findOrcreate({
+        where:{
+            movieTitle:addMovie.Title,
+            moviePoster:addMovie.Poster,
+            moviePlot:addMovie.Plot,
+            movieGenre:addMovie.Genre,
+            movieYear:addMovie.Year
+        }
+    }).then(dbMovie=>{
+        console.log(dbMovie)
+        var movieId=req.params.id
+        var userId=req.user.id
 
-    db.MovieUser.create({
-        UserId:userId,
-        MovieId:movieId
-    }).then(response=>{
-        console.log(response)
-        console.log("****************************")
-        db.Movies.findOne({
-            where:{
-                id:movieId
-            },
-            raw:true
-            
-        }).then(result=>{
-            console.log(result)
-            console.log("dragon")
-            res.send(result)
-        }).catch(err=>{
-            res.json(err)
+        db.MovieUser.create({
+            userID:userId,
+            MovieID:movieId
+        }).then(response=>{
+            res.status(200)
         });
-    }).catch(err=>{
-        console.log(err)
     });
 });
+
+
+
+// router.post("/addFavorites/:id", function(req,res){
+//     console.log("unicorn")
+//     var movieId=req.params.id
+//     var userId=req.user.id
+
+//     db.MovieUser.create({
+//         UserId:userId,
+//         MovieId:movieId
+//     }).then(response=>{
+//         console.log(response)
+//         console.log("****************************")
+//         db.Movies.findOne({
+//             where:{
+//                 id:movieId
+//             },
+//             raw:true
+            
+//         }).then(result=>{
+//             console.log(result)
+//             console.log("dragon")
+//             res.send(result)
+//         }).catch(err=>{
+//             res.json(err)
+//         });
+//     }).catch(err=>{
+//         console.log(err)
+//     });
+// });
 
 // router.get("/addFavorites/:movie",function(req,res){
   

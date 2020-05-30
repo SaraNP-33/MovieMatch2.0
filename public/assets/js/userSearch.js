@@ -34,7 +34,7 @@ $(document).ready(()=>{
         $("#output").html(output);
         
     });
-
+//make movie pop in a modal
    
 $(document).on("click", ".oneMovie", function(event){
     var movieid=$(this).data("movieid")
@@ -49,7 +49,7 @@ $(document).on("click", ".oneMovie", function(event){
         console.log(oneMovie.Title)
     
         var output=`
-        <div class="modal-header">
+        <div class="modal-header justify-content-center">
         <h5 class="modal-title">${oneMovie.Title}</h5>
         </div>
         <div class="modal-body">
@@ -58,10 +58,11 @@ $(document).on("click", ".oneMovie", function(event){
         <p>${oneMovie.Genre}</p>
         <p>${oneMovie.Plot}</p>
         <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Add</button>
+        <button type="button" id="Add" class="btn btn-primary" data-addMovie=${result}>Add</button>
         <button type="button" id="close"class="btn btn-secondary" data-dismiss="modal">Close</button>
           
         `
+        
         $(".modal-content").prepend(output);
        
         
@@ -73,61 +74,36 @@ $(document).on("click", ".oneMovie", function(event){
 })
 
 });
+//make modal empty everytime we exit out of it
 $(document).on("click", "#close", function(event){
     $(".modal-content").empty();
 })
 
+
+//add the movie to the favorites 
 $(document).on("click","#Add", function(event){
-    var movieid=$("#Add").data("movieid")
-    console.log(movieid)
-    $.ajax({
-        url:"/addFavorites/"+ movieid,
-        method:"POST"
-        
-    }).then(function(response){
-        console.log(JSON.stringify(response))
-        location.href="/addFavorites/"
-        var movie=response[0];                                          
-                                                                            
-        var p = $("<p>");
-        var resultsDiv= $("<div>")
-       var title = $("<h3>").text(movie.movieTitle);
-       var year = $("<p>").text(movie.movieYear);
-       var plot = $("<p>").text(movie.moviePlot);
-       var genre=$("<p>").text(movie.movieGenre)
-       var poster = $("<img>");
-       poster.attr("src", movie.moviePoster);
-       p.append(title, year, plot, genre);
-       resultsDiv.append(poster);
-       resultsDiv.append(p);
-     
-       $("#faves").prepend(movie.moviePoster);
-
-
-    }).fail(function(err){
-        console.log(err)
-    });
-
+    var addMovie=$(this).data("addMovie")
+    console.log(addMovie)
  
-})
+ 
 
 });
 
-$.get("/addFavorites", function(data){
-    console.log(data)
-    for(var i=0;i<data.length;i++){
-        var movies=$("<div>")
+// $.get("/addFavorites", function(data){
+//     console.log(data)
+//     for(var i=0;i<data.length;i++){
+//         var movies=$("<div>")
 
-        movies.addClass("movie")
+//         movies.addClass("movie")
 
-        movies.attr("id", "moviedb", + i)
+//         movies.attr("id", "moviedb", + i)
 
-        $("#faves").append(movies);
+//         $("#faves").append(movies);
 
-        $("#moviedb" +i).append("<h3>"+ (i+1)+" ." +data[i].movieTitle+"</h3>")
-        $("#moviedb" +i).append("<p>"+  +data[i].movieYear+ "</p>")
-        $("#moviedb" +i).append("<p>"+  +data[i].movieGenre+ "</p>")
-        $("#moviedb" +i).append("<p>"+  +data[i].moviePlot+ "</p>")
+//         $("#moviedb" +i).append("<h3>"+ (i+1)+" ." +data[i].movieTitle+"</h3>")
+//         $("#moviedb" +i).append("<p>"+  +data[i].movieYear+ "</p>")
+//         $("#moviedb" +i).append("<p>"+  +data[i].movieGenre+ "</p>")
+//         $("#moviedb" +i).append("<p>"+  +data[i].moviePlot+ "</p>")
 
-    }
+//     }
 })
