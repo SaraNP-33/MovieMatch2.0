@@ -23,11 +23,11 @@ $(document).ready(()=>{
 
         for (var i=0;i<movie.length;i++){
             output+=`
-            <div class=col-md-4>
+            <div class=col-md-4 id=movies>
             <img src ="${movie[i].Poster}">
             <h3>${movie[i].Title}</h3>
             <p>${movie[i].Year}</p>
-            <button type="button" id="oneMovie" class="btn btn-danger" data-movieid="${movie[i].imdbID}">Movie Details </button>
+            <button type="button" id="${i}" class="btn btn-danger oneMovie" data-movieid="${movie[i].imdbID}">Movie Details </button>
             </div>
             `
         }
@@ -36,8 +36,8 @@ $(document).ready(()=>{
     });
 
    
-$(document).on("click", "#oneMovie", function(event){
-    var movieid=$("#oneMovie").data("movieid")
+$(document).on("click", ".oneMovie", function(event){
+    var movieid=$(this).data("movieid")
 
     $.ajax({
         url:"/movies/"+ movieid,
@@ -51,9 +51,6 @@ $(document).on("click", "#oneMovie", function(event){
         var output=`
         <div class="modal-header">
         <h5 class="modal-title">${oneMovie.Title}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
         </div>
         <div class="modal-body">
         <img src=${oneMovie.Poster}>
@@ -62,10 +59,12 @@ $(document).on("click", "#oneMovie", function(event){
         <p>${oneMovie.Plot}</p>
         <div class="modal-footer">
         <button type="button" class="btn btn-primary">Add</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="close"class="btn btn-secondary" data-dismiss="modal">Close</button>
           
         `
-        $(".modal-content").append(output);
+        $(".modal-content").prepend(output);
+       
+        
         $("#result-modal").modal("toggle");
         
     }).fail(function(err){
@@ -74,6 +73,9 @@ $(document).on("click", "#oneMovie", function(event){
 })
 
 });
+$(document).on("click", "#close", function(event){
+    $(".modal-content").empty();
+})
 
 $(document).on("click","#Add", function(event){
     var movieid=$("#Add").data("movieid")
