@@ -82,8 +82,10 @@
 
 #searchBar{
 
-
-
+padding-top: 3%;
+padding-bottom: 3%;
+height:250px;
+font-size:14pt
 
 }
 
@@ -96,3 +98,8 @@
    color: rgba(255, 255, 255, .5);
  }
  
+
+
+ .oneMovie{
+   margin-bottom: 20px;
+ }
