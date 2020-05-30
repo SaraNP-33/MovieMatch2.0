@@ -49,7 +49,7 @@ $(document).on("click", ".oneMovie", function(event){
         console.log(oneMovie.Title)
     
         var output=`
-        <div class="modal-header">
+        <div class="modal-header justify-content-center">
         <h5 class="modal-title">${oneMovie.Title}</h5>
         </div>
         <div class="modal-body">
