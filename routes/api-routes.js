@@ -70,6 +70,7 @@ router.post("/addFavorites/:id", function(req,res){
         console.log(err)
     });
 });
+});
 
 // router.get("/addFavorites/:movie",function(req,res){
   

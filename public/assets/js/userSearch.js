@@ -21,11 +21,10 @@ $(document).ready(()=>{
             //         <h5>${movie.Genre}</h5>
             //         <h5>${movie.Year}</h5>
             //         <p>${movie.Plot}</p>
-                    
-            //         `
             //     });
             //     $("output").html(output);
             // }
+            
         // });
     }).then(function(res){
         console.log(res)
