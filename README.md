@@ -14,7 +14,7 @@ Keep a list of movies that you love or would like to recommend to friends.
 
 Find out what movies your friends love, giving you some good ideas for a Friday night!
 
-![popcorn](./public/assets/image/popcorn.png)
+![popcorn](/public/assets/image/Popcorn.png)
 ___
 
 # Getting Started
