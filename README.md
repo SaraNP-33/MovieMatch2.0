@@ -14,7 +14,7 @@ Keep a list of movies that you love or would like to recommend to friends.
 
 Find out what movies your friends love, giving you some good ideas for a Friday night!
 
-![popcorn](./image/popcorn.png)
+![popcorn](/assets/image/popcorn.png)
 ___
 
 # Getting Started
@@ -42,7 +42,7 @@ We decided the main priorities were to have the user be able to login/sign up an
 
 In order to achieve this goal we had to decide what technology and resources we were going to use in our app. 
 
-## Instalations
+## Installations
 
 We started by deciding what type of database we wanted to use. We chose the Mysql database and used Sequelize to sync our sever to the database. Here were the NPM packages we had to install in order to use this database:
 
@@ -173,19 +173,19 @@ ___
 
  Login: when the user logs in they are taken to the welcome page. 
 
- ![login](./images/login.gif)
+ ![login](/assets/images/login.gif)
 
 Search: From the welcome page the user can click on search and is taken to another page where they can execute that search
 
-![search](./images/search.gif)
+![search](/assets/images/search.gif)
 
 Movie Details: From the search results, the user can access the movie details by clicking the button below. 
 
-![add](./images/add.gif)
+![add](/assets/images/add.gif)
 
 logout: If the user choses to logout they can by hitting the logout button
 
-![logout](./images/logout.gif)
+![logout](/assets/images/logout.gif)
 
 ___
 
