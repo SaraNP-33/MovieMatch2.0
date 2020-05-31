@@ -14,7 +14,7 @@ Keep a list of movies that you love or would like to recommend to friends.
 
 Find out what movies your friends love, giving you some good ideas for a Friday night!
 
-![popcorn](/assets/image/popcorn.png)
+![popcorn](./assets/image/popcorn.png)
 ___
 
 # Getting Started
@@ -173,19 +173,19 @@ ___
 
  Login: when the user logs in they are taken to the welcome page. 
 
- ![login](/assets/images/login.gif)
+ ![login](./assets/images/login.gif)
 
 Search: From the welcome page the user can click on search and is taken to another page where they can execute that search
 
-![search](/assets/images/search.gif)
+![search](./assets/images/search.gif)
 
 Movie Details: From the search results, the user can access the movie details by clicking the button below. 
 
-![add](/assets/images/add.gif)
+![add](./assets/images/add.gif)
 
 logout: If the user choses to logout they can by hitting the logout button
 
-![logout](/assets/images/logout.gif)
+![logout](./assets/images/logout.gif)
 
 ___
 
