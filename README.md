@@ -1,7 +1,10 @@
 # This App is for Movie Lovers
 ___
 
-![alt text](https://github.com/SaraNP-33/MovieMatch/blob/master/public/assets/images/image(2).png)
+<p align="center">
+  <img src="https://github.com/SaraNP-33/MovieMatch/blob/master/public/assets/images/image(2).png">
+</p>
+
 
 ___
 <ins> **Movie Match** </ins> 
