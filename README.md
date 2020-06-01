@@ -1,14 +1,6 @@
-<p align="center">
-<b>App still under construction</b>
-</p>
-<p align="center">
-  <img src="/public/assets/images/underConst.jpg">
-</p>
-___
 
 # This App is for Movie Lovers
 
-___
 
 <p align="center">
   <img src="https://github.com/SaraNP-33/MovieMatch/blob/master/public/assets/images/image(2).png">
@@ -34,6 +26,15 @@ Find out what movies your friends love, giving you some good ideas for a Friday 
 
 ___
 
+<p align="center">
+<b>App still under construction</b>
+</p>
+<p align="center">
+  <img src="/public/assets/images/underConst.jpg">
+</p>
+
+
+___
 # Getting Started
 
 This application was a project collaboration. The idea steamed from having the ability of creating communities that loved movies/ shows and be able to share that passion with others. 
