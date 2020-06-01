@@ -15,7 +15,11 @@ Keep a list of movies that you love or would like to recommend to friends.
 Find out what movies your friends love, giving you some good ideas for a Friday night!
 
 
-![popcorn](/public/assets/images/Popcorn.png)
+<p align="center">
+  <img src="/public/assets/images/Popcorn.png">
+</p>
+
+
 ___
 
 # Getting Started
@@ -196,17 +200,17 @@ ___
 - JavaScript
 + Sequelize 
 - MySQL
-- JQuery 
-+ Node.JS
-- Passport.JS
-+ Passport-Local
-- bcrypt Js
-+ Express.JS
-- Express Sessions
-+ Axios 
-- GitHub
-+ Heroku
-
++ JQuery 
+- Node.JS
++ Passport.JS
+- Passport-Local
++ bcrypt Js
+- Express.JS
++ Express Sessions
+- Axios 
++ GitHub
+- Heroku
+___
 
 # Heroky Deployed Link
 
