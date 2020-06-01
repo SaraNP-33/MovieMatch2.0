@@ -1,4 +1,13 @@
+<p align="center">
+<b>App still under construction</b>
+</p>
+<p align="center">
+  <img src="/public/assets/images/underConst.jpg">
+</p>
+___
+
 # This App is for Movie Lovers
+
 ___
 
 <p align="center">
