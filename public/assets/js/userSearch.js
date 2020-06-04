@@ -34,6 +34,9 @@ $(document).ready(()=>{
         $("#output").html(output);
         
     });
+
+
+});
 //make movie pop in a modal
    
 $(document).on("click", ".oneMovie", function(event){
@@ -47,6 +50,7 @@ $(document).on("click", ".oneMovie", function(event){
         var oneMovie=result
         console.log(oneMovie)
         console.log(oneMovie.Title)
+        console.log("showing modal")
     
         var output=`
         <div class="modal-header justify-content-center">
@@ -58,7 +62,7 @@ $(document).on("click", ".oneMovie", function(event){
         <p id="genre" data-genre="${oneMovie.Genre}">${oneMovie.Genre}</p>
         <p id="plot" data-plot="${oneMovie.Plot}">${oneMovie.Plot}</p>
         <div class="modal-footer">
-        <button type="button" id="Add" class="btn btn-primary" data-addMovie=${oneMovie}>Add</button>
+        <button type="button" id="Add" class="btn btn-primary" >Add</button>
         <button type="button" id="close"class="btn btn-secondary" data-dismiss="modal">Close</button>
           
         `
@@ -71,13 +75,11 @@ $(document).on("click", ".oneMovie", function(event){
     }).fail(function(err){
         console.log(err)
     })
-})
-
 });
 //make modal empty everytime we exit out of it
 $(document).on("click", "#close", function(event){
     $(".modal-content").empty();
-})
+});
 
 
 //add the movie to the favorites 
@@ -109,4 +111,9 @@ $(document).on("click","#Add", function(event){
  })
 });
 
-})
+$.get("/favoriteMovies")
+.then(function(results){
+    console.log(results)
+});
+
+});

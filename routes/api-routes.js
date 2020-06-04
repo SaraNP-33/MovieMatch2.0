@@ -57,8 +57,10 @@ router.get("/user/movie/:search" ,function(req,res){
 router.post("/addFavorites", function(req,res){
     console.log("unicorn")
     var addMovie=req.body
-    var userId=req.user.id
+    
+    console.log("**************************")
     console.log(addMovie)
+    
     db.Movies.findOrCreate({
         where:{
             movieTitle:addMovie.movieTitle,
@@ -67,21 +69,20 @@ router.post("/addFavorites", function(req,res){
             movieGenre:addMovie.movieGenre,
             movieYear:addMovie.movieYear
         },
+        
       
     }).then(dbMovie=>{
         console.log(dbMovie)
+        console.log("*****************");
+        console.log(dbMovie[0].dataValues.id);
         
         var userId=req.user.id
 
-        db.MovieUser.create({
-           where:{
-            UserId:userId
-           },
-           include:[{
-               model:db.Movies,
-               as:"id"
-
-           }]
+        db.MovieUser.findOrCreate({
+            where:{
+            UserId:userId,
+            MovieId:dbMovie[0].dataValues.id
+        }
             
         }).then(response=>{
             res.status(200)
@@ -89,6 +90,20 @@ router.post("/addFavorites", function(req,res){
     });
 });
 
+router.get("/favoriteMovies", function(req,res){
+    db.MovieUser.findAll({
+        where:{
+            UserId:1,
+            
+        },
+        raw:true,
+        include:[{model:db.Movies, attributes:["movieTitle", "moviePoster"]}],
+        // attributes:[[db.sequelize.literal('"Movies"."movieTitle"'), 'movieTitle']]
+        //  attributes:["votes"]
+    }).then(response=>{
+        res.json(response)
+    });
+});
 
 
 // router.post("/addFavorites/:id", function(req,res){
